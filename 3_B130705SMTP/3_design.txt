@@ -1,0 +1,19 @@
+
+Client Program
+
+1. Sends Username and Password to Server for Authentication
+2. Displays a menu for user, which contains following options: 1. LIST 2. SEND MESSAGE 3. QUIT
+3. Client takes option from User and send to Server.
+4. Client Displays the Server Messages.
+   
+
+Server Program
+
+1. Authenticates the user
+2. Server works according to option
+	1.LIST : Server sends back the recieved emails to user.
+	2. SEND Message: 
+		 a. Server receives a new mail from user 
+		 b. Server tries to send the mail to receiever's mail server.
+		 c. If Server couldn't send the mail, the mail is added to Queue.
+
