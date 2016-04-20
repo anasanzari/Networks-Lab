@@ -1,0 +1,32 @@
+#Design Document
+
+ #Client Program
+  Takes integer N from the User.(Waits till it gets a valid integer).
+  Sends integer N to server program.
+  Takes N integers one by one from the User.
+  Sends N integers to server program one by one.
+  Receives the sorted integers from the server program and displays it.
+
+  input : N , set of N integers
+  output: sorted integers returned by the server program.
+
+  Functions used: 
+	1. getInt() : force a user to input positive a integer.
+	2. create() : fills the values of the struct sockaddr_in.
+
+
+ #Server Program
+  Receives N from the user program.
+  Receives set of N integers from user program.
+  Sorts the integer using bubble sort.
+  Sends the sorted integers back to user program.
+
+  input : N , set of N integers
+  output: sorted integers returned by the server program.
+
+  Functions used: 
+	1. create() : fills the values of the struct sockaddr_in.
+
+ 
+
+  

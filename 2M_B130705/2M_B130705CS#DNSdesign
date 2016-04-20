@@ -1,0 +1,67 @@
+
+#General
+
+  1. Record types are of the form (Name,Value,Type,TTL).
+  2. Special struct is defined for passing DNS Messages.
+     struct has following data fields:
+      1. msg_id
+      2. msg_type - indicates whether reply or query or error
+      3. nof_a - number of answers(resource records)
+      4. nof_q - number of questions.
+      5. questions - contains the questions
+      6. answers - array of resource records
+
+
+#client Program
+
+  1. Asks for the name which is to be resolved from the user.
+  2. Forwards the query to Local DNS.
+  3. Recieves the reply from Local DNS.
+  4. Displays the results.
+
+
+#local DNS Program
+
+  1. Listens for queries.
+  2. Check if a query is already present in the cache.
+  3. If yes, serves the records from the cache.
+  4. If No,
+      1. Forwards the query to Root Server.
+      2. Forwards the reply of Root Server to TLD server.
+      3. Forwards the reply of TLD further to Authoritative server.
+      4. Finally caches the reply of Authoritative server and serves the reply back to client.
+
+#Root Server
+
+  1. Listens for queries.
+  2. search top level domain of the query in the records.
+  3. If found, sends the tld record as reply.
+  4. If Not found, sends an error reply.
+
+
+#TLD Server
+
+    1. Listens for queries.
+    2. search the query in the records.
+    3. If found, sends the record as reply.
+    4. If Not found, sends an error reply.
+
+#Authoritative Server
+
+    1. Listens for queries.
+    2. search the query in the records.
+    3. If found, sends the record as reply.
+    4. If Not found, sends an error reply.
+
+
+
+#user defined helper functions used.
+
+1. getType(type) : maps the Query type(int) to string representation.
+2. createmsg() : creates and returns a dns message filled with given data.
+3. createquery() : creates and returns a query filled with given data.
+4. createresource(): creates and returns a resource filled with given data.
+5. sendquery() : sends a query to a given address.
+6. recievequery() : receives a query.
+7. search():  search for a record in a list of records.
+8. printRecords() : Prints the details of records.
